@@ -30,10 +30,10 @@ const galleryList = document.querySelector(".gallery");
 
 galleryList.insertAdjacentHTML("afterbegin", galleryMarkup);
 
-// const instance = basicLightbox.create(
-// 	document.querySelector('.modal')
-// )
+const instance = basicLightbox.create(
+	document.querySelector('.modal')
+)
 
-// const openModal = document.querySelector('.modal');
-// openModal.addEventListener('click', instance.show);
+const openModal = document.querySelector('.modal');
+openModal.addEventListener('click', instance.show);
 
