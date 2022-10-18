@@ -5,20 +5,17 @@
 // Заміна значення атрибута src елемента <img> в модальному вікні перед відкриттям. Використовуй готову розмітку модального вікна із зображенням з прикладів бібліотеки basicLightbox.
 
 import { galleryItems } from './gallery-items.js';
+
 // Change code below this line
+// Створемо галарею
 
 console.log(galleryItems);
 
-// const images = galleryItems;
-
 const createGalleryItem = ({preview, original, description}) =>
 `<div class="gallery__item">
-
-<a class="gallery__link modal" href="${original}">
-
+    <a class="gallery__link" href="${original}">
         <img class="gallery__image" src="${preview}" alt="${description}" data-source="${original}" />
     </a>
-
 </div>`;
 
 const galleryMarkup = galleryItems.reduce(
@@ -30,10 +27,18 @@ const galleryList = document.querySelector(".gallery");
 
 galleryList.insertAdjacentHTML("afterbegin", galleryMarkup);
 
+
+//отримання url великого зображення
+
 const instance = basicLightbox.create(
-	document.querySelector('.modal')
+	document.querySelector('.gallery__link')
 )
 
-const openModal = document.querySelector('.modal');
-openModal.addEventListener('click', instance.show);
+// const instance = basicLightbox.create(`
+//     <img src="${event.target.dataset.source}">
+// `)
+// console.log(event.target.dataset.source)
 
+const openModal = document.querySelector('.gallery__link');
+// document.a.classList.add("modal")
+openModal.addEventListener('click', instance.show);
