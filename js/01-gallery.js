@@ -11,6 +11,8 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
+const showSlide = document.querySelectorAll('.gallery__image');
+
 const createGalleryItem = ({preview, original, description}) =>
 `<div class="gallery__item">
     <a class="gallery__link" href="${original}">
@@ -24,21 +26,16 @@ const galleryMarkup = galleryItems.reduce(
 );
 
 const galleryList = document.querySelector(".gallery");
-
 galleryList.insertAdjacentHTML("afterbegin", galleryMarkup);
 
 
 //отримання url великого зображення
+document.addEventListener('click', event => {
+   const type = event.target.dataset.source
+   const instance = basicLightbox.create(`
+   <img src="${event.target.dataset.source}">
+`)
+    // console.log(event.target.dataset);
+    instance.show()
+})
 
-const instance = basicLightbox.create(
-	document.querySelector('.gallery__link')
-)
-
-// const instance = basicLightbox.create(`
-//     <img src="${event.target.dataset.source}">
-// `)
-// console.log(event.target.dataset.source)
-
-const openModal = document.querySelector('.gallery__link');
-// document.a.classList.add("modal")
-openModal.addEventListener('click', instance.show);
